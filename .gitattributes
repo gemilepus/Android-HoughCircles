@@ -2,3 +2,4 @@
 * text=auto
 *.c linguist-language=android
 *.java linguist-language=android
+*.bat linguist-language=android
