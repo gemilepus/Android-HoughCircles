@@ -3,4 +3,4 @@
 *.c linguist-language=android
 *.java linguist-language=android
 *.bat linguist-language=android
-*linguist-language=android
+*.* linguist-language=android
