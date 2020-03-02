@@ -1,6 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-*.c linguist-language=android
-*.java linguist-language=android
-*.bat linguist-language=android
-*.* linguist-language=Android
+*.* linguist-language=java
