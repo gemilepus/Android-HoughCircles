@@ -196,20 +196,21 @@ public class MainActivity extends Activity implements OnTouchListener, CvCameraV
     private MatOfRect circles;
 
     private int fps = 0;
-    private int viewchange = 0,time_str_last = 0,time_str_now = 0;
+    private long ViewCount = 0;
+    private long LastTime = System.currentTimeMillis();
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-        viewchange ++;
-        time_str_now = Integer.parseInt( android.text.format.DateFormat.format("ss", new java.util.Date()).toString()) ;
-        if( Math.abs(time_str_now -  time_str_last) > 2 ){
-            fps = (int)Math.ceil(viewchange/3)  ;
-            viewchange = 0;
-            time_str_last = time_str_now;
-
+        ViewCount ++;
+        long nowTime = System.currentTimeMillis();
+        long times = Math.abs(nowTime -  LastTime);
+        if( times > 1000 ){
+            fps = (int)Math.ceil(ViewCount*1000/times);
+            ViewCount = 0;
+            LastTime = nowTime;
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mtextfps.setText(String.valueOf(  fps ));
+                    mtextfps.setText(String.valueOf(fps));
                 }
             });
         }
